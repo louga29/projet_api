@@ -504,7 +504,7 @@ async def get_city_benford(number: int):
                     <tr>
                         <td>{digit}</td>
                         <td>{digit_counts.get(int(digit), 0)}</td>
-                        <td>{observed_distribution.get(digit, 0):.2f}%</td>
+                        
                         <td>{benford_expected[digit]}%</td>
                         <td>{abs(observed_distribution.get(digit, 0) - benford_expected[digit]):.2f}%</td>
                     </tr>
