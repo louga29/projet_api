@@ -36,7 +36,7 @@ async def read_root():
     Returns:
         HTMLResponse: Page HTML contenant la documentation de l'API
     """
-    html_content = f"""
+    html_content = """
     <!DOCTYPE html>
     <html>
     <head>
@@ -502,11 +502,11 @@ async def get_city_benford(number: int):
                     </tr>
                     {''.join(f"""
                     <tr>
-                        <td>{digit}</td>
-                        <td>{digit_counts.get(int(digit), 0)}</td>
-                        <td>{observed_distribution.get(digit, 0):.2f}%</td>
-                        <td>{benford_expected[digit]}%</td>
-                        <td>{abs(observed_distribution.get(digit, 0) - benford_expected[digit]):.2f}%</td>
+                        <td>{{digit}}</td>
+                        <td>{{digit_counts.get(int(digit), 0)}}</td>
+                        <td>{{observed_distribution.get(digit, 0):.2f}}%</td>
+                        <td>{{benford_expected[digit]}}%</td>
+                        <td>{{abs(observed_distribution.get(digit, 0) - benford_expected[digit]):.2f}}%</td>
                     </tr>
                     """ for digit in digits)}
                 </table>
@@ -521,10 +521,10 @@ async def get_city_benford(number: int):
                     </tr>
                     {''.join(f"""
                     <tr>
-                        <td>{i+1}</td>
-                        <td>{city['nom']}</td>
-                        <td>{city['population']:,}</td>
-                        <td>{str(city['population'])[0]}</td>
+                        <td>{{i+1}}</td>
+                        <td>{{city['nom']}}</td>
+                        <td>{{city['population']:,}}</td>
+                        <td>{{str(city['population'])[0]}}</td>
                     </tr>
                     """ for i, city in enumerate(cities))}
                 </table>
@@ -767,11 +767,11 @@ async def get_benford_analysis(table: str):
                     </tr>
                     {''.join(f"""
                     <tr>
-                        <td>{digit}</td>
-                        <td>{digit_counts.get(int(digit), 0)}</td>
-                        <td>{observed_distribution.get(digit, 0):.2f}%</td>
-                        <td>{benford_expected[digit]}%</td>
-                        <td>{abs(observed_distribution.get(digit, 0) - benford_expected[digit]):.2f}%</td>
+                        <td>{{digit}}</td>
+                        <td>{{digit_counts.get(int(digit), 0)}}</td>
+                        <td>{{observed_distribution.get(digit, 0):.2f}}%</td>
+                        <td>{{benford_expected[digit]}}%</td>
+                        <td>{{abs(observed_distribution.get(digit, 0) - benford_expected[digit]):.2f}}%</td>
                     </tr>
                     """ for digit in digits)}
                 </table>
@@ -786,10 +786,10 @@ async def get_benford_analysis(table: str):
                     </tr>
                     {''.join(f"""
                     <tr>
-                        <td>{i+1}</td>
-                        <td>{item['nom']}</td>
-                        <td>{item['Valeur']:,}</td>
-                        <td>{str(item['Valeur'])[0]}</td>
+                        <td>{{i+1}}</td>
+                        <td>{{item['nom']}}</td>
+                        <td>{{item['Valeur']:,}}</td>
+                        <td>{{str(item['Valeur'])[0]}}</td>
                     </tr>
                     """ for i, item in enumerate(data))}
                 </table>
@@ -944,11 +944,11 @@ async def get_city_benford_mongodb(number: int):
                     </tr>
                     {''.join(f"""
                     <tr>
-                        <td>{digit}</td>
-                        <td>{digit_counts.get(int(digit), 0)}</td>
-                        <td>{observed_distribution.get(digit, 0):.2f}%</td>
-                        <td>{benford_expected[digit]}%</td>
-                        <td>{abs(observed_distribution.get(digit, 0) - benford_expected[digit]):.2f}%</td>
+                        <td>{{digit}}</td>
+                        <td>{{digit_counts.get(int(digit), 0)}}</td>
+                        <td>{{observed_distribution.get(digit, 0):.2f}}%</td>
+                        <td>{{benford_expected[digit]}}%</td>
+                        <td>{{abs(observed_distribution.get(digit, 0) - benford_expected[digit]):.2f}}%</td>
                     </tr>
                     """ for digit in digits)}
                 </table>
@@ -963,10 +963,10 @@ async def get_city_benford_mongodb(number: int):
                     </tr>
                     {''.join(f"""
                     <tr>
-                        <td>{i+1}</td>
-                        <td>{city['Nom']}</td>
-                        <td>{city['Population']:,}</td>
-                        <td>{str(city['Population'])[0]}</td>
+                        <td>{{i+1}}</td>
+                        <td>{{city['Nom']}}</td>
+                        <td>{{city['Population']:,}}</td>
+                        <td>{{str(city['Population'])[0]}}</td>
                     </tr>
                     """ for i, city in enumerate(cities))}
                 </table>
@@ -1344,11 +1344,11 @@ async def get_benford_test():
                     </tr>
                     {''.join(f"""
                     <tr>
-                        <td>{digit}</td>
-                        <td>{benford_expected[digit]:.1f}%</td>
-                        <td>{real_benford.get(digit, 0):.2f}%</td>
-                        <td>{fake_benford.get(digit, 0):.2f}%</td>
-                        <td>{custom_benford.get(digit, 0):.2f}%</td>
+                        <td>{{digit}}</td>
+                        <td>{{benford_expected[digit]:.1f}}%</td>
+                        <td>{{real_benford.get(digit, 0):.2f}}%</td>
+                        <td>{{fake_benford.get(digit, 0):.2f}}%</td>
+                        <td>{{custom_benford.get(digit, 0):.2f}}%</td>
                     </tr>
                     """ for digit in range(1, 10))}
                 </table>
