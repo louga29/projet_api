@@ -36,7 +36,7 @@ async def read_root():
     Returns:
         HTMLResponse: Page HTML contenant la documentation de l'API
     """
-    html_content = """
+    html_content = f"""
     <!DOCTYPE html>
     <html>
     <head>
